@@ -1,70 +1,89 @@
-# React.js and Tailwind CSS Assignment
+# Task Manager — Week 3 (React + Tailwind)
 
-This assignment focuses on building a responsive React application using JSX and Tailwind CSS, implementing component architecture, state management, hooks, and API integration.
+This repository is the starter + completed work for the Week 3 assignment: a small React application built with Vite and styled with Tailwind CSS. The app demonstrates component architecture, state management with hooks, local persistence, and a basic API integration example.
 
-## Assignment Overview
+## What's implemented (summary)
 
-You will:
-1. Set up a React project with Vite and Tailwind CSS
-2. Create reusable UI components
-3. Implement state management using React hooks
-4. Integrate with external APIs
-5. Style your application using Tailwind CSS
+- Project scaffolded with Vite (frontend in `Frontend/`).
+- Tailwind CSS integrated and configured.
+- React Router set up with routes and layout.
+- Reusable UI components: `Button`, `Card`, `Navbar`, `Footer`, `Layout`.
+- Task manager with add / complete / delete / filter and persistence using a `useLocalStorage` hook.
+- Theme context for light/dark mode (logic + persistence). You can add a visible toggle in the Navbar (optional).
+- API integration: `PostList` fetches posts from JSONPlaceholder with loading, error handling, search and basic pagination.
+- Simple pages for Privacy and Terms (wired to Footer links).
 
-## Getting Started
+## Run the app locally
 
-1. Accept the GitHub Classroom assignment invitation
-2. Clone your personal repository that was created by GitHub Classroom
-3. Install dependencies:
-   ```
-   npm install
-   ```
-4. Start the development server:
-   ```
-   npm run dev
-   ```
+Open a terminal and run these commands from the project root to start the frontend:
 
-## Files Included
-
-- `Week3-Assignment.md`: Detailed assignment instructions
-- Starter files for your React application:
-  - Basic project structure
-  - Pre-configured Tailwind CSS
-  - Sample component templates
-
-## Requirements
-
-- Node.js (v18 or higher)
-- npm or yarn
-- Modern web browser
-- Code editor (VS Code recommended)
-
-## Project Structure
-
-```
-src/
-├── components/       # Reusable UI components
-├── pages/           # Page components
-├── hooks/           # Custom React hooks
-├── context/         # React context providers
-├── api/             # API integration functions
-├── utils/           # Utility functions
-└── App.jsx          # Main application component
+```bash
+cd "Frontend"
+npm install   # only if you haven't already
+npm run dev
 ```
 
-## Submission
+Vite will print a local URL (for example `http://localhost:5176`) — open that in your browser.
 
-Your work will be automatically submitted when you push to your GitHub Classroom repository. Make sure to:
+If you see PostCSS/Tailwind errors, ensure the `Frontend/postcss.config.js` and `Frontend/tailwind.config.js` files exist and match the project `type` configuration. If needed, run:
 
-1. Complete all required components and features
-2. Implement proper state management with hooks
-3. Integrate with at least one external API
-4. Style your application with Tailwind CSS
-5. Deploy your application and add the URL to your README.md
+```bash
+npm install -D tailwindcss postcss autoprefixer
+```
+
+## Routes (what to test)
+
+- `/` — Home (welcome)
+- `/tasks` — Task Manager (add / toggle / delete / filter tasks)
+- `/posts` — Posts (API list, search, pagination)
+- `/privacy` — Privacy Policy (sample)
+- `/terms` — Terms of Service (sample)
+
+## Key files & folders
+
+- `Frontend/src/components/` — UI components (Button, Card, Navbar, Footer, Layout, TaskManager, PostList, etc.)
+- `Frontend/src/hooks/useLocalStorage.js` — custom hook for local persistence
+- `Frontend/src/context/ThemeContext.jsx` — theme context (light/dark)
+- `Frontend/src/index.css` — Tailwind directives
+- `Frontend/tailwind.config.js`, `Frontend/postcss.config.js` — Tailwind/PostCSS configs
+
+## Manual test checklist
+
+1. Start dev server and open the app.
+2. Navigation: click Navbar links, verify pages load.
+3. Tasks page:
+   - Add a task, toggle complete, delete, and use filters.
+   - Refresh the page: tasks should persist.
+4. Posts page:
+   - Confirm posts load, loading skeleton shows, search filters displayed posts, and pagination works.
+5. Footer:
+   - Click Privacy Policy and Terms links — they should navigate to sample pages.
+6. Theme:
+   - Theme is persisted (logic exists). I can add a visible toggle in the Navbar if you want.
+
+## Notes, gaps & recommended next steps
+
+- The assignment requirements are largely satisfied. A few polish items you may want to add:
+  - Visible theme toggle in `Navbar` (calls `toggleTheme()` from `ThemeContext`).
+  - Additional responsive tweaks and accessibility improvements.
+  - Unit tests (Vitest + React Testing Library) and CI for grading.
+  - Replace sample Privacy/Terms copy with your project's legal text before publishing.
+
+## Deploy
+
+You can deploy the `Frontend` build to Vercel, Netlify, or GitHub Pages. Build commands:
+
+```bash
+cd Frontend
+npm run build
+# then upload the contents of Frontend/dist to your static host
+```
 
 ## Resources
 
-- [React Documentation](https://react.dev/)
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
-- [Vite Documentation](https://vitejs.dev/guide/)
-- [React Router Documentation](https://reactrouter.com/) 
+- React: https://react.dev/
+- Tailwind CSS: https://tailwindcss.com/docs
+- Vite: https://vitejs.dev/guide/
+- React Router: https://reactrouter.com/
+
+If you want, I can: add the visible theme toggle in the Navbar, add one unit test for the TaskManager, or polish responsive styles. Which would you like next?
